@@ -2,8 +2,9 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { ProductCard } from "./Product.styled";
 import { StyledLink } from "../Link/Link.styled";
-import Comments from "../../../../backend-create/products/components/Comments";
-
+// import Comments from "../../../../backend-create/products/components/Comments";
+import Comments from "../Comments";
+import useSWRMutation from "swr/mutation";
 export default function Product() {
   const router = useRouter();
   const { id } = router.query;
@@ -26,6 +27,7 @@ export default function Product() {
         Price: {data.price} {data.currency}
       </p>
       {data.reviews.length > 0 && <Comments reviews={data.reviews} />}
+
       <StyledLink href="/">Back to all</StyledLink>
     </ProductCard>
   );
